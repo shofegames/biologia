@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La ballena franca austral | Viaje a Puerto Madryn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --mar: #12324A;
+    --mar-2: #1E4D6B;
+    --titulo: #12324A;
+    --espuma: #EEF3F2;
+    --superficie: #FFFFFF;
+    --estepa: #B8862B;
+    --estepa-suave: #F3E6C8;
+    --alga: #3E6B5A;
+    --alga-suave: #DCE9E2;
+    --tinta: #1B2730;
+    --tinta-2: #4A5A66;
+    --borde: #C9D3D6;
+    --alerta: #A8442E;
+    --alerta-suave: #F5DDD5;
+    --linea: #1E4D6B;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --mar: #0A1C2A; --mar-2: #9CC3DA; --titulo: #9CC3DA;
+      --espuma: #0F1A22; --superficie: #16242E;
+      --estepa: #E0B65A; --estepa-suave: #33291A;
+      --alga: #8CC4AC; --alga-suave: #1C3029;
+      --tinta: #E6EEF0; --tinta-2: #A9B8C0; --borde: #2C3D47;
+      --alerta: #F09A82; --alerta-suave: #3A2420; --linea: #7FB2D0;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --mar: #0A1C2A; --mar-2: #9CC3DA; --titulo: #9CC3DA;
+    --espuma: #0F1A22; --superficie: #16242E;
+    --estepa: #E0B65A; --estepa-suave: #33291A;
+    --alga: #8CC4AC; --alga-suave: #1C3029;
+    --tinta: #E6EEF0; --tinta-2: #A9B8C0; --borde: #2C3D47;
+    --alerta: #F09A82; --alerta-suave: #3A2420; --linea: #7FB2D0;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 64px); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0; background: var(--espuma); color: var(--tinta);
+    font-family: "Atkinson Hyperlegible", "Segoe UI", Verdana, sans-serif;
+    font-size: 1.125rem; line-height: 1.6;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--mar);
+  }
+  svg { max-width: 100%; }
+  a { color: var(--mar-2); text-underline-offset: 3px; }
+  a:focus-visible, summary:focus-visible { outline: 3px solid var(--estepa); outline-offset: 3px; border-radius: 4px; }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", "Trebuchet MS", sans-serif; line-height: 1.1; margin: 0; }
+
+  nav.menu { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--mar); }
+  nav.menu ul { list-style: none; margin: 0 auto; padding: 0 1rem; max-width: 1100px; display: flex; gap: .25rem; overflow-x: auto; scrollbar-width: none; }
+  nav.menu ul::-webkit-scrollbar { display: none; }
+  nav.menu a { display: block; padding: .9rem .8rem; color: #E6EEF0; text-decoration: none; white-space: nowrap; font-size: 1rem; }
+  nav.menu a:hover { color: #fff; text-decoration: underline; }
+
+  header.hero { background: var(--mar); color: #fff; overflow: hidden; }
+  .hero-inner { max-width: 1100px; margin: 0 auto; padding: 3rem 1.25rem 0; display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  .hero h1 { font-size: clamp(2.6rem, 8vw, 5.4rem); font-weight: 800; letter-spacing: -0.02em; max-width: 12ch; }
+  .hero p.bajada { font-size: 1.25rem; color: #C9DCE6; max-width: 40ch; margin: 1rem 0 0; }
+  .hero p.escuela { font-size: 1rem; color: #9DB6C4; margin: .5rem 0 0; }
+  .hero-ballena { display: block; width: 100%; height: auto; margin-top: 1.5rem; }
+  @media (min-width: 860px) {
+    .hero-inner { grid-template-columns: 1fr 1.15fr; align-items: end; padding-top: 4rem; }
+    .hero-ballena { margin-top: 0; }
+  }
+  .blow { transform-origin: 50% 100%; animation: soplido 3.2s ease-out 0.4s 1 both; }
+  @keyframes soplido { 0% { opacity: 0; transform: scaleY(0.2); } 60%, 100% { opacity: 1; transform: scaleY(1); } }
+  @media (prefers-reduced-motion: reduce) { .blow { animation: none; } }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem 4rem; }
+  section { padding: 3.5rem 0 1rem; border-bottom: 1px solid var(--borde); }
+  section:last-of-type { border-bottom: 0; }
+  section > h2 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: var(--titulo); margin-bottom: 1rem; }
+  h3 { font-size: 1.45rem; font-weight: 700; margin: 2rem 0 .6rem; }
+  .intro { font-size: 1.3rem; max-width: 46ch; margin: 0 0 1.5rem; }
+  .texto { max-width: 68ch; }
+  .nota { max-width: 68ch; color: var(--tinta-2); font-size: 1rem; }
+  ul.lista { padding-left: 1.2rem; max-width: 68ch; }
+  ul.lista li { margin: .45rem 0; }
+
+  .dos-col { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .dos-col { grid-template-columns: 1fr 1fr; } }
+  .tres-col { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .tres-col { grid-template-columns: repeat(3, 1fr); } }
+
+  .bloque { background: var(--superficie); border: 1px solid var(--borde); border-radius: 14px; padding: 1.25rem 1.4rem; }
+  .bloque h3 { margin-top: 0; }
+  .bloque.estepa { background: var(--estepa-suave); border-color: transparent; }
+  .bloque.alga { background: var(--alga-suave); border-color: transparent; }
+  .bloque.alerta { background: var(--alerta-suave); border-color: transparent; }
+  .bloque ul { padding-left: 1.1rem; margin: 0; }
+  .bloque li { margin: .35rem 0; }
+  .bloque p { margin: .3rem 0 0; }
+
+  dl.ficha { display: grid; grid-template-columns: max-content 1fr; gap: .55rem 1.25rem; margin: 0; max-width: 72ch; }
+  dl.ficha dt { font-weight: 700; color: var(--tinta-2); }
+  dl.ficha dd { margin: 0; }
+  dl.ficha .destacado { font-size: 1.3rem; }
+  @media (max-width: 520px) {
+    dl.ficha { grid-template-columns: 1fr; gap: .1rem; }
+    dl.ficha dd { margin-bottom: .6rem; }
+  }
+
+  ol.ciclo { list-style: none; counter-reset: paso; padding: 0; margin: 0; display: grid; gap: .9rem; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { ol.ciclo { grid-template-columns: repeat(4, 1fr); } }
+  ol.ciclo li { counter-increment: paso; border-top: 4px solid var(--estepa); padding-top: .7rem; }
+  ol.ciclo li::before { content: counter(paso); font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 2rem; color: var(--estepa); display: block; line-height: 1; }
+  ol.ciclo strong { display: block; margin: .3rem 0 .15rem; }
+
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .red-wrap { min-width: 680px; }
+  .red { width: 100%; height: auto; display: block; }
+  .red .caja { fill: var(--superficie); stroke: var(--borde); stroke-width: 1.5; }
+  .red .caja.ballena { fill: #1E4D6B; stroke: #1E4D6B; }
+  .red .caja.sol { fill: var(--estepa-suave); stroke: var(--estepa); }
+  .red .caja.gaviota { fill: var(--alerta-suave); stroke: var(--alerta); }
+  .red .caja.desc { fill: var(--alga-suave); stroke: var(--alga); }
+  .red text { font-family: "Atkinson Hyperlegible", sans-serif; font-size: 17px; fill: var(--tinta); }
+  .red text.blanco { fill: #fff; font-weight: 700; }
+  .red text.chico { font-size: 13px; fill: var(--tinta-2); }
+  .red .flecha { stroke: var(--tinta-2); stroke-width: 2.2; fill: none; marker-end: url(#punta); }
+  .red .flecha.verde { stroke: var(--alga); stroke-dasharray: 6 5; marker-end: url(#punta-alga); }
+  .red .flecha.roja { stroke: var(--alerta); marker-end: url(#punta-alerta); }
+  .red #punta path { fill: var(--tinta-2); }
+  .red #punta-alga path { fill: var(--alga); }
+  .red #punta-alerta path { fill: var(--alerta); }
+
+  .tipo { font-weight: 700; color: var(--alga); display: block; }
+
+  .numeros { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin: 1rem 0; }
+  .numero { border-left: 4px solid var(--mar-2); padding: .2rem 0 .2rem 1rem; }
+  .numero b { font-family: "Bricolage Grotesque", sans-serif; font-size: 2.2rem; font-weight: 800; display: block; line-height: 1.1; }
+  .numero span { color: var(--tinta-2); font-size: 1rem; }
+
+  figure.grafico { margin: 1rem 0 0; }
+  figure.grafico figcaption { color: var(--tinta-2); font-size: 1rem; margin-top: .5rem; max-width: 68ch; }
+  .chart-wrap { min-width: 520px; max-width: 820px; }
+  #chart text { font-family: "Atkinson Hyperlegible", sans-serif; fill: var(--tinta-2); font-size: 14px; }
+  #chart .valor { fill: var(--tinta); font-size: 15px; font-weight: 700; }
+  #chart .eje { stroke: var(--borde); }
+  #chart .linea { stroke: var(--linea); stroke-width: 3.5; fill: none; }
+  #chart .punto { fill: var(--superficie); stroke: var(--linea); stroke-width: 3; }
+
+  table.datos { border-collapse: collapse; margin-top: 1rem; font-size: 1rem; }
+  table.datos th, table.datos td { border: 1px solid var(--borde); padding: .45rem .7rem; text-align: center; white-space: nowrap; }
+  table.datos th { background: var(--superficie); font-weight: 700; }
+  table.datos caption { text-align: left; font-weight: 700; padding-bottom: .4rem; }
+
+  details.pregunta { border-bottom: 1px solid var(--borde); max-width: 75ch; }
+  details.pregunta summary { cursor: pointer; list-style: none; padding: 1rem 2.2rem 1rem 0; position: relative; font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.25rem; }
+  details.pregunta summary::-webkit-details-marker { display: none; }
+  details.pregunta summary::after { content: "+"; position: absolute; right: .3rem; top: .75rem; font-size: 1.6rem; color: var(--mar-2); }
+  details.pregunta[open] summary::after { content: "–"; }
+  details.pregunta p { margin: 0 0 1rem; }
+
+  ul.fuentes { list-style: none; padding: 0; max-width: 75ch; }
+  ul.fuentes li { padding: .6rem 0; border-bottom: 1px solid var(--borde); }
+  ul.fuentes .quien { display: block; color: var(--tinta-2); font-size: .95rem; }
+  ul.fuentes a { word-break: break-word; }
+
+  footer { background: var(--mar); color: #C9DCE6; padding: 2rem 1.25rem; }
+  footer div { max-width: 1100px; margin: 0 auto; }
+  footer p { margin: .2rem 0; }
+</style>
+</head>
+<body>
+
+<nav class="menu" aria-label="Secciones">
+  <ul>
+    <li><a href="#ecosistema">Ecosistema</a></li>
+    <li><a href="#especie">La especie</a></li>
+    <li><a href="#poblacion">Poblacion</a></li>
+    <li><a href="#problema">Problema ambiental</a></li>
+    <li><a href="#preguntas">Preguntas frecuentes</a></li>
+    <li><a href="#fuentes">Fuentes</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>La ballena franca austral</h1>
+      <p class="bajada">Lo que investigamos despues del viaje a Puerto Madryn: donde vive, como vive y que la pone en peligro.</p>
+      <p class="escuela">Escuela Martin Buber, 2do año, Trabajo Practico Final de Biologia 2026</p>
+    </div>
+    <svg class="hero-ballena" viewBox="0 0 640 300" role="img" aria-label="Dibujo de una ballena franca nadando en la superficie, con el soplido en forma de V y las callosidades blancas en la cabeza">
+      <g class="blow" fill="#C9DCE6" opacity=".9">
+        <path d="M168 118 C150 80 132 52 118 20 C140 44 160 72 176 112 Z"/>
+        <path d="M184 116 C196 78 214 50 236 22 C226 52 208 82 192 118 Z"/>
+        <circle cx="114" cy="18" r="9"/><circle cx="128" cy="10" r="6"/><circle cx="240" cy="18" r="9"/><circle cx="226" cy="10" r="6"/>
+      </g>
+      <path d="M0 196 C80 186 160 204 240 196 C320 188 400 206 480 198 C540 192 600 200 640 196 L640 300 L0 300 Z" fill="#1E4D6B"/>
+      <path d="M60 190 C80 140 150 112 230 118 C330 126 420 150 500 176 C530 186 556 190 580 186 C600 164 612 140 630 128 C626 156 612 176 596 192 C614 200 628 210 636 226 C612 214 590 206 566 204 C520 214 440 224 330 222 C200 220 90 222 60 190 Z" fill="#26343E"/>
+      <path d="M70 196 C140 204 230 206 320 204 C420 202 500 196 560 198" stroke="#3A4C58" stroke-width="3" fill="none"/>
+      <g fill="#E9ECE4">
+        <ellipse cx="104" cy="160" rx="16" ry="9" transform="rotate(-24 104 160)"/>
+        <ellipse cx="134" cy="142" rx="11" ry="7" transform="rotate(-18 134 142)"/>
+        <ellipse cx="162" cy="133" rx="9" ry="6"/>
+        <ellipse cx="92" cy="182" rx="9" ry="6"/>
+        <ellipse cx="120" cy="174" rx="6" ry="4"/>
+        <ellipse cx="186" cy="128" rx="6" ry="4"/>
+      </g>
+      <path d="M0 214 C90 206 170 220 260 214 C350 208 440 222 530 214 C580 210 620 214 640 212 L640 300 L0 300 Z" fill="#12324A" opacity=".85"/>
+    </svg>
+  </div>
+</header>
+
+<main>
+
+  <section id="ecosistema" aria-labelledby="t-eco">
+    <h2 id="t-eco">El ecosistema: Peninsula Valdes</h2>
+    <p class="intro">Peninsula Valdes esta en la provincia de Chubut. Tiene dos golfos: el golfo Nuevo, donde esta Puerto Madryn, y el golfo San Jose.</p>
+    <p class="texto">En 1999 la UNESCO la nombro Patrimonio Mundial porque es un lugar muy importante para cuidar a los mamiferos marinos. Es la zona principal donde la ballena franca del Atlantico sudoeste tiene sus crias.</p>
+
+    <div class="dos-col">
+      <div class="bloque estepa">
+        <h3>Factores abioticos (sin vida)</h3>
+        <ul>
+          <li>Agua de mar y sal</li>
+          <li>Los dos golfos, donde el mar entra en la tierra</li>
+          <li>Temperatura del agua</li>
+          <li>Viento y luz del sol</li>
+          <li>Suelo seco: en tierra hay estepa desertica patagonica</li>
+        </ul>
+      </div>
+      <div class="bloque alga">
+        <h3>Factores bioticos (con vida)</h3>
+        <ul>
+          <li>Ballena franca austral, el animal que vimos en el viaje</li>
+          <li>Fitoplancton: algas chiquitas que hacen fotosintesis</li>
+          <li>Krill y copepodos, el alimento de la ballena</li>
+          <li>Gaviota cocinera, que ataca a la ballena</li>
+          <li>Piojos de ballena, que viven en su piel</li>
+          <li>Bacterias y otros descomponedores</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="especie" aria-labelledby="t-esp">
+    <h2 id="t-esp">La especie</h2>
+    <p class="intro">El nombre cientifico de la ballena franca austral es <i>Eubalaena australis</i>.</p>
+
+    <h3>Ficha</h3>
+    <dl class="ficha">
+      <dt>Nombre cientifico</dt><dd class="destacado"><i>Eubalaena australis</i></dd>
+      <dt>Tamaño</dt><dd>Entre 14 y 17 metros. Las hembras son mas grandes que los machos.</dd>
+      <dt>Peso</dt><dd>Hasta 60 toneladas, casi como 10 elefantes.</dd>
+      <dt>Soplido</dt><dd>El aire que tira por los orificios de la cabeza forma una V.</dd>
+      <dt>Callosidades</dt><dd>Partes duras de la piel en la cabeza. Cada ballena tiene un dibujo distinto, y asi se la reconoce.</dd>
+      <dt>Barbas</dt><dd>No tiene dientes. Tiene entre 220 y 260 “barbas” de hasta 2,5 metros que funcionan como un colador.</dd>
+      <dt>Proteccion</dt><dd>En Argentina es Monumento Natural Nacional desde 1984.</dd>
+      <dt>Por que “franca”</dt><dd>Es lenta y flota al morir. Por eso los balleneros la veian como la ballena ideal para cazar.</dd>
+    </dl>
+
+    <h3>Alimentacion</h3>
+    <p class="texto">Filtra el agua con sus barbas y se queda con toneladas de krill. En Peninsula Valdes come poco, pero a fines de septiembre y en octubre a veces come un copepodo (un crustaceo muy chiquito) llamado <i>Calanus australis</i>. Mientras estan en Valdes, las madres casi no comen y viven de su grasa.</p>
+
+    <h3>Ciclo de vida</h3>
+    <ol class="ciclo">
+      <li><strong>Embarazo</strong>Dura 12 meses y nace una sola cria.</li>
+      <li><strong>Nacimiento</strong>Nace en invierno. En Valdes la mayoria nace en agosto y mide unos 5,5 metros.</li>
+      <li><strong>Primeros meses</strong>Madre y cria se quedan unos tres meses en Valdes y despues viajan a las zonas donde hay comida.</li>
+      <li><strong>Se separa de la madre</strong>Cerca del año deja de tomar leche y muchas crias se separan de su madre. Parques Nacionales dice que algunas se quedan 2 o 3 años mas cerca de ella.</li>
+    </ol>
+    <p class="texto">Cada hembra tiene una cria cada tres años. Por eso la poblacion se recupera muy lento.</p>
+  </section>
+
+  <section id="poblacion" aria-labelledby="t-pob">
+    <h2 id="t-pob">Poblacion y dinamica de poblaciones</h2>
+
+    <h3>Red trofica</h3>
+    <div class="scroll-x">
+      <div class="red-wrap">
+        <svg class="red" viewBox="0 0 900 420" role="img" aria-label="Red trofica de la ballena franca. El sol da energia al fitoplancton. El fitoplancton alimenta a los copepodos y al krill. Los copepodos y el krill alimentan a la ballena franca. La gaviota cocinera come piel y grasa de la ballena. Los descomponedores reciben restos de la ballena, la gaviota y el krill, y devuelven nutrientes al fitoplancton.">
+          <defs>
+            <marker id="punta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z"/></marker>
+            <marker id="punta-alga" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z"/></marker>
+            <marker id="punta-alerta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z"/></marker>
+          </defs>
+
+          <rect class="caja sol" x="16" y="160" width="110" height="60" rx="12"/>
+          <text x="71" y="196" text-anchor="middle">Sol</text>
+
+          <rect class="caja" x="170" y="160" width="160" height="60" rx="12"/>
+          <text x="250" y="188" text-anchor="middle">Fitoplancton</text>
+          <text class="chico" x="250" y="207" text-anchor="middle">productor</text>
+
+          <rect class="caja" x="400" y="40" width="180" height="60" rx="12"/>
+          <text x="490" y="68" text-anchor="middle">Copepodos</text>
+          <text class="chico" x="490" y="87" text-anchor="middle">consumidor primario</text>
+
+          <rect class="caja" x="400" y="190" width="180" height="60" rx="12"/>
+          <text x="490" y="218" text-anchor="middle">Krill</text>
+          <text class="chico" x="490" y="237" text-anchor="middle">consumidor primario</text>
+
+          <rect class="caja ballena" x="660" y="110" width="210" height="60" rx="12"/>
+          <text class="blanco" x="765" y="138" text-anchor="middle">Ballena franca</text>
+          <text x="765" y="157" text-anchor="middle" style="fill:#C9DCE6;font-size:13px">consumidor secundario</text>
+
+          <rect class="caja gaviota" x="660" y="250" width="210" height="60" rx="12"/>
+          <text x="765" y="278" text-anchor="middle">Gaviota cocinera</text>
+          <text class="chico" x="765" y="297" text-anchor="middle">come piel y grasa</text>
+
+          <rect class="caja desc" x="400" y="340" width="180" height="60" rx="12"/>
+          <text x="490" y="368" text-anchor="middle">Descomponedores</text>
+          <text class="chico" x="490" y="387" text-anchor="middle">bacterias</text>
+
+          <path class="flecha" d="M126 190 L166 190"/>
+          <path class="flecha" d="M300 160 C330 100 360 76 396 72"/>
+          <path class="flecha" d="M330 200 L396 214"/>
+          <path class="flecha" d="M580 70 C620 72 640 100 656 124"/>
+          <path class="flecha" d="M580 220 C620 218 640 180 656 160"/>
+          <path class="flecha roja" d="M765 170 L765 246"/>
+          <path class="flecha" d="M490 250 L490 336"/>
+          <path class="flecha" d="M680 310 C640 340 610 360 584 366"/>
+          <path class="flecha" d="M700 170 C700 230 640 300 584 352"/>
+          <path class="flecha verde" d="M400 372 C320 372 260 300 252 224"/>
+          <text class="chico" x="300" y="326" text-anchor="middle">devuelven nutrientes</text>
+        </svg>
+      </div>
+    </div>
+    <p class="nota">Las flechas van de quien es comido hacia quien lo come. La ballena tiene dos alimentos (krill y copepodos) y a la vez es alimento de la gaviota. Cuando un ser vivo muere, los descomponedores devuelven sus nutrientes al mar.</p>
+
+    <h3>Relaciones intraespecificas (ballena con ballena)</h3>
+    <div class="tres-col">
+      <div class="bloque">
+        <span class="tipo">Competencia</span>
+        <p>En la epoca de apareamiento se forman grupos donde varios machos compiten por una hembra. Machos y hembras se aparean con varias parejas.</p>
+      </div>
+      <div class="bloque">
+        <span class="tipo">Cuidado de la cria</span>
+        <p>La madre amamanta a su cria un año. En Valdes casi no come, vive de su grasa para darle leche, y a veces frena el juego de la cria para que no gaste energia.</p>
+      </div>
+      <div class="bloque">
+        <span class="tipo">Aprenden entre ellas</span>
+        <p>Para escapar de las gaviotas, las madres aprendieron a arquear el lomo y dejarlo bajo el agua. Esa postura se fue copiando entre las ballenas adultas.</p>
+      </div>
+    </div>
+
+    <h3>Relaciones interespecificas (ballena con otras especies)</h3>
+    <div class="tres-col">
+      <div class="bloque">
+        <span class="tipo">Depredacion</span>
+        <p>La ballena come krill y copepodos. La ballena gana y el krill pierde.</p>
+      </div>
+      <div class="bloque">
+        <span class="tipo">Parasitismo</span>
+        <p>La gaviota cocinera come piel y grasa de la ballena viva. La gaviota gana y la ballena pierde.</p>
+      </div>
+      <div class="bloque">
+        <span class="tipo">Comensalismo</span>
+        <p>Los “piojos de las ballenas” son crustaceos blancos que viven en las callosidades. Ellos ganan un lugar donde vivir y a la ballena casi no le afecta.</p>
+      </div>
+    </div>
+
+    <h3>Como cambio la poblacion</h3>
+    <div class="numeros">
+      <div class="numero"><b>100.000</b><span>ballenas francas australes antes de la caza</span></div>
+      <div class="numero"><b>7.000</b><span>ballenas francas australes que se calcula que hay hoy</span></div>
+      <div class="numero"><b>626</b><span>crias muertas en Valdes entre 2003 y 2014</span></div>
+      <div class="numero"><b>1971</b><span>desde ese año las fotografian desde aviones</span></div>
+    </div>
+    <ul class="lista">
+      <li>La caza casi las hace desaparecer. Es la ballena que estuvo mas cerca de extinguirse.</li>
+      <li>Entre 1993 y 2002 morian en promedio unas 8 crias por año en Valdes. Desde 2003 empezaron a morir muchas mas, mas de 50 por año.</li>
+      <li>Despues del fenomeno El Niño, cuando el mar se calienta, mueren mas hembras adultas. Si El Niño pasa mas seguido, la poblacion podria dejar de crecer.</li>
+    </ul>
+
+    <h3>Grafico: madres y crias con heridas de gaviotas</h3>
+    <figure class="grafico">
+      <div class="scroll-x">
+        <div class="chart-wrap">
+          <svg id="chart" viewBox="0 0 640 360" role="img" aria-label="Grafico de linea: porcentaje de madres y crias de ballena franca con heridas de gaviotas en Peninsula Valdes. Años 70: 2,1 por ciento. Años 80: 38,4. Años 90: 83,6. Años 2000: 98,9."></svg>
+        </div>
+      </div>
+      <figcaption>Datos de un estudio cientifico que reviso fotos tomadas desde aviones entre 1974 y 2011. En los años 70 casi ninguna ballena tenia heridas. En los años 2000 casi todas tenian.</figcaption>
+    </figure>
+
+    <div class="scroll-x">
+      <table class="datos">
+        <caption>Tabla del grafico</caption>
+        <thead>
+          <tr><th>Decada</th><th>Madres y crias con heridas</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Años 70</td><td>2,1%</td></tr>
+          <tr><td>Años 80</td><td>38,4%</td></tr>
+          <tr><td>Años 90</td><td>83,6%</td></tr>
+          <tr><td>Años 2000</td><td>98,9%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="problema" aria-labelledby="t-prob">
+    <h2 id="t-prob">Problematica ambiental: basurales y gaviotas</h2>
+    <p class="intro">En Peninsula Valdes las gaviotas cocineras aprendieron a comer piel y grasa de ballenas vivas. Casi no pasa en ningun otro lugar del mundo.</p>
+
+    <div class="dos-col">
+      <div class="bloque">
+        <h3>Por que pasa</h3>
+        <ul>
+          <li>Durante años, en Puerto Madryn hubo basurales a cielo abierto con basura de la ciudad y restos de la pesca.</li>
+          <li>La gaviota cocinera es el ave que mas se ve en los basurales. Hay mas gaviotas cerca de las ciudades mas grandes.</li>
+          <li>Con tanta comida facil, hay muchas gaviotas. Cuando la ballena sale a respirar, se le posan en el lomo y la picotean.</li>
+        </ul>
+      </div>
+      <div class="bloque alerta">
+        <h3>La piel de la ballena es muy sensible</h3>
+        <ul>
+          <li>La piel es la capa que protege a la ballena del agua y del frio.</li>
+          <li>Cuando la gaviota la rompe, la herida llega hasta la grasa. La ballena puede perder agua y temperatura, y gasta energia en curarse.</li>
+          <li>Las gaviotas abren heridas nuevas o agrandan las que ya estaban.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Como afecta a las ballenas</h3>
+    <ul class="lista">
+      <li>Las madres y crias que son atacadas toman menos leche, descansan menos y juegan menos.</li>
+      <li>Las crias son las mas atacadas: en los años 2000 tenian en promedio unas 9 heridas cada una.</li>
+      <li>Las madres aprendieron a esconder el lomo bajo el agua, pero las crias todavia no saben hacerlo.</li>
+      <li>Los cientificos creen que los ataques podrian ayudar a que mueran mas crias, aunque no son la unica causa.</li>
+    </ul>
+  </section>
+
+  <section id="preguntas" aria-labelledby="t-preg">
+    <h2 id="t-preg">Preguntas frecuentes</h2>
+
+    <details class="pregunta">
+      <summary>¿Cuanto mide una ballena franca?</summary>
+      <p>Entre 14 y 17 metros, y puede pesar hasta 60 toneladas. Es casi lo mismo que 10 elefantes juntos.</p>
+    </details>
+    <details class="pregunta">
+      <summary>¿Por que vienen a Puerto Madryn?</summary>
+      <p>Vienen para aparearse y tener a sus crias. En invierno dejan las aguas frias donde comen y viajan a los golfos de Peninsula Valdes.</p>
+    </details>
+    <details class="pregunta">
+      <summary>¿Por que las gaviotas atacan a las ballenas?</summary>
+      <p>Porque aprendieron a comer su piel y su grasa. Como habia mucha basura en los basurales, hay muchas gaviotas, y algunas buscan comida en el lomo de las ballenas.</p>
+    </details>
+    <details class="pregunta">
+      <summary>¿Cada cuanto tiene crias?</summary>
+      <p>Una cria cada tres años. El embarazo dura 12 meses y despues le da leche cerca de un año.</p>
+    </details>
+    <details class="pregunta">
+      <summary>¿Estan en peligro?</summary>
+      <p>Casi desaparecen por la caza: de unas 100.000 quedaron muy pocas. Hoy hay unas 7.000 y estan protegidas, pero las gaviotas, la contaminacion y el calentamiento del mar todavia las afectan.</p>
+    </details>
+    <details class="pregunta">
+      <summary>¿Por que se llama “franca”?</summary>
+      <p>Porque es lenta y flota al morir. Los balleneros decian que era la ballena ideal para cazar.</p>
+    </details>
+  </section>
+
+  <section id="fuentes" aria-labelledby="t-fuen">
+    <h2 id="t-fuen">Fuentes</h2>
+    <ul class="fuentes">
+      <li><span class="quien">UNESCO, Patrimonio Mundial: Peninsula Valdes</span><a href="https://whc.unesco.org/es/list/937">whc.unesco.org/es/list/937</a></li>
+      <li><span class="quien">educ.ar, Ministerio de Educacion de la Nacion</span><a href="https://www.educ.ar/recursos/158566/sitios-del-patrimonio-mundial-peninsula-valdes">educ.ar/recursos/158566/sitios-del-patrimonio-mundial-peninsula-valdes</a></li>
+      <li><span class="quien">Parques Nacionales de Argentina: Conocelo</span><a href="https://www.argentina.gob.ar/parquesnacionales/ballena-franca-austral/conocelo">argentina.gob.ar/parquesnacionales/ballena-franca-austral/conocelo</a></li>
+      <li><span class="quien">Parques Nacionales de Argentina: ¿Por que esta en peligro?</span><a href="https://www.argentina.gob.ar/parquesnacionales/ballena-franca-austral/por-que-peligro">argentina.gob.ar/parquesnacionales/ballena-franca-austral/por-que-peligro</a></li>
+      <li><span class="quien">Maron y otros (2015), revista cientifica PLOS ONE, en la biblioteca de los Institutos Nacionales de Salud de EE.UU. (datos del grafico)</span><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4619304/">pmc.ncbi.nlm.nih.gov/articles/PMC4619304</a></li>
+      <li><span class="quien">Agrelo y otros (2021), revista Science Advances, Universidad de St Andrews</span><a href="https://research-portal.st-andrews.ac.uk/en/publications/ocean-warming-threatens-southern-right-whale-population-recovery/">research-portal.st-andrews.ac.uk/en/publications/ocean-warming-threatens-southern-right-whale-population-recovery</a></li>
+      <li><span class="quien">CONICET, repositorio: alimentacion de la ballena franca en Valdes</span><a href="https://ri.conicet.gov.ar/handle/11336/39170">ri.conicet.gov.ar/handle/11336/39170</a></li>
+      <li><span class="quien">CONICET: gaviotas cocineras y basurales en Chubut</span><a href="https://www.conicet.gov.ar/?p=124965">conicet.gov.ar/?p=124965</a></li>
+      <li><span class="quien">CONICET, repositorio: basurales como fuente de alimento para aves en Patagonia</span><a href="https://ri.conicet.gov.ar/handle/11336/101331">ri.conicet.gov.ar/handle/11336/101331</a></li>
+      <li><span class="quien">Editorial cientifica Springer: estrategias de apareamiento de las ballenas francas</span><a href="https://doi.org/10.1007/978-3-031-35651-3_23">doi.org/10.1007/978-3-031-35651-3_23</a></li>
+      <li><span class="quien">Estudio cientifico sobre madres y crias de ballena franca (separacion cerca del año)</span><a href="https://peeref.com/works/71463919">peeref.com/works/71463919</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div>
+    <p>Trabajo Practico Final, Viaje a Puerto Madryn</p>
+    <p>Escuela Martin Buber, 2do año, 2026</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var datos = [["Años 70", 2.1], ["Años 80", 38.4], ["Años 90", 83.6], ["Años 2000", 98.9]];
+  var ns = "http://www.w3.org/2000/svg";
+  var svg = document.getElementById("chart");
+  var W = 640, H = 360, left = 64, right = 30, top = 30, bottom = 56;
+  var plotW = W - left - right, plotH = H - top - bottom;
+  function el(tag, attrs, text) {
+    var e = document.createElementNS(ns, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    svg.appendChild(e);
+    return e;
+  }
+  function yPos(v) { return top + plotH - (v / 100) * plotH; }
+  for (var y = 0; y <= 100; y += 20) {
+    el("line", { x1: left, x2: W - right, y1: yPos(y), y2: yPos(y), "class": "eje", "stroke-width": y === 0 ? 1.5 : 1 });
+    el("text", { x: left - 10, y: yPos(y) + 5, "text-anchor": "end" }, y + "%");
+  }
+  el("text", { x: 16, y: top + plotH / 2, "text-anchor": "middle", transform: "rotate(-90 16 " + (top + plotH / 2) + ")" }, "Ballenas con heridas");
+  var step = plotW / datos.length;
+  var pts = datos.map(function (d, i) { return [left + step * i + step / 2, yPos(d[1])]; });
+  el("path", { d: "M" + pts.map(function (p) { return p[0] + " " + p[1]; }).join(" L"), "class": "linea" });
+  datos.forEach(function (d, i) {
+    var c = el("circle", { cx: pts[i][0], cy: pts[i][1], r: 7, "class": "punto" });
+    var t = document.createElementNS(ns, "title"); t.textContent = d[0] + ": " + String(d[1]).replace(".", ",") + "%"; c.appendChild(t);
+    el("text", { x: pts[i][0], y: pts[i][1] - 16, "text-anchor": "middle", "class": "valor" }, String(d[1]).replace(".", ",") + "%");
+    el("text", { x: pts[i][0], y: top + plotH + 26, "text-anchor": "middle" }, d[0]);
+  });
+  el("text", { x: left + plotW / 2, y: H - 6, "text-anchor": "middle" }, "Decada");
+})();
+</script>
+</body>
+</html>
