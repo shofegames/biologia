@@ -127,7 +127,7 @@
   ol.ciclo strong { display: block; margin: .3rem 0 .15rem; }
 
   .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .red-wrap { min-width: 680px; }
+  .red-wrap { min-width: 720px; }
   .red { width: 100%; height: auto; display: block; }
   .red .caja { fill: var(--superficie); stroke: var(--borde); stroke-width: 1.5; }
   .red .caja.ballena { fill: #1E4D6B; stroke: #1E4D6B; }
@@ -143,6 +143,18 @@
   .red #punta path { fill: var(--tinta-2); }
   .red #punta-alga path { fill: var(--alga); }
   .red #punta-alerta path { fill: var(--alerta); }
+  .red #punta-sol path { fill: var(--estepa); }
+  .red #punta-resto path { fill: var(--tinta-2); }
+  .red .caja.abio { fill: var(--estepa-suave); stroke: var(--estepa); stroke-dasharray: 5 4; }
+  .red .flecha.sol { stroke: var(--estepa); stroke-width: 3; stroke-dasharray: 7 5; marker-end: url(#punta-sol); }
+  .red .flecha.resto { stroke: var(--tinta-2); stroke-width: 1.4; stroke-dasharray: 3 4; marker-end: url(#punta-resto); opacity: .8; }
+  .red text.roja-txt { fill: var(--alerta); }
+  .leyenda { list-style: none; padding: 0; margin: .8rem 0 0; display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; font-size: .95rem; color: var(--tinta-2); }
+  .leyenda i { display: inline-block; width: 28px; height: 0; border-top: 3px solid var(--tinta-2); vertical-align: middle; margin-right: .4rem; }
+  .leyenda i.sol { border-top: 3px dashed var(--estepa); }
+  .leyenda i.roja { border-top-color: var(--alerta); }
+  .leyenda i.resto { border-top: 2px dotted var(--tinta-2); }
+  .leyenda i.verde { border-top: 3px dashed var(--alga); }
 
   .tipo { font-weight: 700; color: var(--alga); display: block; }
 
@@ -231,15 +243,21 @@
     <p class="intro">Peninsula Valdes esta en Chubut. Tiene dos golfos: el golfo Nuevo, donde esta Puerto Madryn, y el golfo San Jose.</p>
     <p class="texto">En 1999 la UNESCO la nombro Patrimonio Mundial porque es muy importante para los mamiferos marinos. Es el lugar principal donde la ballena franca del Atlantico sudoeste tiene sus crias.</p>
 
+    <h3>Como es el ecosistema</h3>
+    <p class="texto">Peninsula Valdes es un ecosistema marino y costero. El clima es seco y ventoso: llueven solo unos 225 mm por año y casi siempre sopla viento del oeste, a unos 25 km/h en promedio. Por eso en tierra hay estepa, con suelo seco y plantas bajas. La costa tiene acantilados, playas angostas y medanos.</p>
+    <p class="texto">En los golfos el agua de mar es salada y fria: tiene unos 13 °C en promedio, con 8 a 9 °C en invierno y 18 a 20 °C en verano. Como los golfos estan protegidos del mar abierto, el agua es mas calma, y eso los hace un buen lugar para que las ballenas tengan a sus crias. La luz del sol entra en el agua y permite que el fitoplancton haga fotosintesis.</p>
+
     <div class="dos-col">
       <div class="bloque estepa">
         <h3>Factores abioticos (sin vida)</h3>
         <ul>
-          <li>Agua de mar y sal</li>
-          <li>Los dos golfos, donde el mar entra en la tierra</li>
-          <li>Temperatura del agua</li>
-          <li>Viento y luz del sol</li>
-          <li>Suelo seco de estepa patagonica</li>
+          <li>Agua de mar salada</li>
+          <li>Temperatura del agua: unos 13 °C en promedio</li>
+          <li>Golfos protegidos, con agua mas calma</li>
+          <li>Poca lluvia: unos 225 mm por año</li>
+          <li>Viento fuerte del oeste</li>
+          <li>Luz del sol</li>
+          <li>Suelo seco de estepa, acantilados y medanos</li>
         </ul>
       </div>
       <div class="bloque alga">
@@ -291,55 +309,84 @@
     <h3>Red trofica</h3>
     <div class="scroll-x">
       <div class="red-wrap">
-        <svg class="red" viewBox="0 0 900 420" role="img" aria-label="Red trofica de la ballena franca. El sol da energia al fitoplancton. El fitoplancton alimenta a los copepodos y al krill. Los copepodos y el krill alimentan a la ballena franca. La gaviota cocinera come piel y grasa de la ballena. Los descomponedores reciben restos de la ballena, la gaviota y el krill, y devuelven nutrientes al fitoplancton.">
+        <svg class="red" viewBox="0 0 960 470" role="img" aria-label="Red trofica de la ballena franca. La luz del sol, un factor abiotico, le da energia al fitoplancton. El fitoplancton alimenta a los copepodos y al krill. Los copepodos y el krill alimentan a la ballena franca. La gaviota cocinera es parasito de la ballena. Los restos y desechos de todos los seres vivos van a los descomponedores, que los transforman en nutrientes minerales en el agua, y el fitoplancton vuelve a usarlos.">
           <defs>
             <marker id="punta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z"/></marker>
             <marker id="punta-alga" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z"/></marker>
             <marker id="punta-alerta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z"/></marker>
+            <marker id="punta-sol" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z"/></marker>
+            <marker id="punta-resto" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z"/></marker>
           </defs>
 
-          <rect class="caja sol" x="16" y="160" width="110" height="60" rx="12"/>
-          <text x="71" y="196" text-anchor="middle">Sol</text>
+          <!-- abioticos -->
+          <rect class="caja sol" x="16" y="150" width="140" height="64" rx="32"/>
+          <text x="86" y="178" text-anchor="middle">Luz del sol</text>
+          <text class="chico" x="86" y="198" text-anchor="middle">energia (abiotico)</text>
 
-          <rect class="caja" x="170" y="160" width="160" height="60" rx="12"/>
-          <text x="250" y="188" text-anchor="middle">Fitoplancton</text>
-          <text class="chico" x="250" y="207" text-anchor="middle">productor</text>
+          <rect class="caja abio" x="16" y="380" width="140" height="64" rx="32"/>
+          <text x="86" y="408" text-anchor="middle">Nutrientes</text>
+          <text class="chico" x="86" y="428" text-anchor="middle">en el agua (abiotico)</text>
 
-          <rect class="caja" x="400" y="40" width="180" height="60" rx="12"/>
-          <text x="490" y="68" text-anchor="middle">Copepodos</text>
-          <text class="chico" x="490" y="87" text-anchor="middle">consumidor primario</text>
+          <!-- seres vivos -->
+          <rect class="caja" x="200" y="150" width="160" height="64" rx="12"/>
+          <text x="280" y="178" text-anchor="middle">Fitoplancton</text>
+          <text class="chico" x="280" y="198" text-anchor="middle">productor</text>
 
-          <rect class="caja" x="400" y="190" width="180" height="60" rx="12"/>
-          <text x="490" y="218" text-anchor="middle">Krill</text>
-          <text class="chico" x="490" y="237" text-anchor="middle">consumidor primario</text>
+          <rect class="caja" x="420" y="40" width="160" height="64" rx="12"/>
+          <text x="500" y="68" text-anchor="middle">Copepodos</text>
+          <text class="chico" x="500" y="88" text-anchor="middle">consumidor primario</text>
 
-          <rect class="caja ballena" x="660" y="110" width="210" height="60" rx="12"/>
-          <text class="blanco" x="765" y="138" text-anchor="middle">Ballena franca</text>
-          <text x="765" y="157" text-anchor="middle" style="fill:#C9DCE6;font-size:13px">consumidor secundario</text>
+          <rect class="caja" x="420" y="240" width="160" height="64" rx="12"/>
+          <text x="500" y="268" text-anchor="middle">Krill</text>
+          <text class="chico" x="500" y="288" text-anchor="middle">consumidor primario</text>
 
-          <rect class="caja gaviota" x="660" y="250" width="210" height="60" rx="12"/>
-          <text x="765" y="278" text-anchor="middle">Gaviota cocinera</text>
-          <text class="chico" x="765" y="297" text-anchor="middle">come piel y grasa</text>
+          <rect class="caja ballena" x="630" y="150" width="160" height="64" rx="12"/>
+          <text class="blanco" x="710" y="178" text-anchor="middle">Ballena franca</text>
+          <text x="710" y="198" text-anchor="middle" style="fill:#C9DCE6;font-size:13px">consumidor secundario</text>
 
-          <rect class="caja desc" x="400" y="340" width="180" height="60" rx="12"/>
-          <text x="490" y="368" text-anchor="middle">Descomponedores</text>
-          <text class="chico" x="490" y="387" text-anchor="middle">bacterias</text>
+          <rect class="caja gaviota" x="820" y="40" width="128" height="64" rx="12"/>
+          <text x="884" y="68" text-anchor="middle">Gaviota</text>
+          <text class="chico" x="884" y="88" text-anchor="middle">parasito</text>
 
-          <path class="flecha" d="M126 190 L166 190"/>
-          <path class="flecha" d="M300 160 C330 100 360 76 396 72"/>
-          <path class="flecha" d="M330 200 L396 214"/>
-          <path class="flecha" d="M580 70 C620 72 640 100 656 124"/>
-          <path class="flecha" d="M580 220 C620 218 640 180 656 160"/>
-          <path class="flecha roja" d="M765 170 L765 246"/>
-          <path class="flecha" d="M490 250 L490 336"/>
-          <path class="flecha" d="M680 310 C640 340 610 360 584 366"/>
-          <path class="flecha" d="M700 170 C700 230 640 300 584 352"/>
-          <path class="flecha verde" d="M400 372 C320 372 260 300 252 224"/>
-          <text class="chico" x="300" y="326" text-anchor="middle">devuelven nutrientes</text>
+          <rect class="caja desc" x="200" y="380" width="748" height="64" rx="12"/>
+          <text x="574" y="408" text-anchor="middle">Descomponedores (bacterias)</text>
+          <text class="chico" x="574" y="428" text-anchor="middle">descomponen restos y desechos de todos los seres vivos</text>
+
+          <!-- energia -->
+          <path class="flecha sol" d="M156 182 L196 182"/>
+
+          <!-- alimentacion -->
+          <path class="flecha" d="M340 150 C370 100 390 76 416 72"/>
+          <path class="flecha" d="M340 214 C370 250 390 268 416 272"/>
+          <path class="flecha" d="M580 72 C610 76 630 110 660 146"/>
+          <path class="flecha" d="M580 272 C610 268 630 240 660 218"/>
+
+          <!-- parasitismo -->
+          <path class="flecha roja" d="M760 150 C790 110 810 90 816 80"/>
+          <text class="chico roja-txt" x="822" y="140">parasitismo</text>
+
+          <!-- restos a descomponedores -->
+          <path class="flecha resto" d="M280 214 L280 376"/>
+          <path class="flecha resto" d="M500 304 L500 376"/>
+          <path class="flecha resto" d="M590 56 C612 56 612 330 612 376"/>
+          <path class="flecha resto" d="M710 214 L710 376"/>
+          <path class="flecha resto" d="M884 104 L884 376"/>
+
+          <!-- reciclaje de nutrientes -->
+          <path class="flecha verde" d="M200 412 L160 412"/>
+          <path class="flecha verde" d="M86 380 C86 300 220 280 250 218"/>
         </svg>
       </div>
     </div>
-    <p class="nota">Las flechas van de quien es comido hacia quien lo come. La ballena tiene dos alimentos y a la vez es alimento de la gaviota. Por eso es una red y no una cadena.</p>
+    <ul class="leyenda">
+      <li><i></i>quien es comido &rarr; quien lo come</li>
+      <li><i class="sol"></i>energia de la luz</li>
+      <li><i class="roja"></i>parasitismo</li>
+      <li><i class="resto"></i>restos y desechos</li>
+      <li><i class="verde"></i>nutrientes que vuelven</li>
+    </ul>
+    <p class="nota">La energia entra por la luz del sol, que es un factor abiotico: el fitoplancton la usa para hacer fotosintesis. Los descomponedores reciben los restos y desechos de todos los seres vivos y los transforman en nutrientes que quedan en el agua, y el fitoplancton los vuelve a usar.</p>
+    <p class="nota">Es una red y no una cadena porque los seres vivos estan conectados de varias formas: la ballena come krill y copepodos, la gaviota cocinera se alimenta de la ballena como parasito (no la caza ni la mata) y los descomponedores reciben restos de todos.</p>
 
     <h3>Relaciones intraespecificas (ballena con ballena)</h3>
     <div class="dos-col">
@@ -357,11 +404,11 @@
     <div class="tres-col">
       <div class="bloque">
         <span class="tipo">Depredacion</span>
-        <p>La ballena come krill y copepodos.</p>
+        <p>La ballena se come al krill y a los copepodos.</p>
       </div>
       <div class="bloque">
         <span class="tipo">Parasitismo</span>
-        <p>La gaviota come piel y grasa de la ballena viva.</p>
+        <p>La gaviota le arranca pedacitos de piel y grasa del lomo mientras la ballena esta viva. La lastima, pero no la mata.</p>
       </div>
       <div class="bloque">
         <span class="tipo">Comensalismo</span>
@@ -387,7 +434,7 @@
           <svg id="chart" viewBox="0 0 640 360" role="img" aria-label="Grafico de linea: porcentaje de madres y crias de ballena franca con heridas de gaviotas en Peninsula Valdes. Años 70: 2,1 por ciento. Años 80: 38,4. Años 90: 83,6. Años 2000: 98,9."></svg>
         </div>
       </div>
-      <figcaption>En el eje X van las decadas y en el eje Y el porcentaje de madres y crias con heridas. Los datos son de fotos tomadas desde aviones entre 1974 y 2011.</figcaption>
+      <figcaption><b>Fuente:</b> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4619304/">Maron y otros (2015), revista cientifica PLOS ONE</a>. Los cientificos revisaron fotos de madres y crias tomadas desde avionetas en los relevamientos que se hacen todos los años en Peninsula Valdes, entre 1974 y 2011, y contaron cuantas tenian heridas de gaviota. En el eje X van las decadas y en el eje Y el porcentaje de madres y crias con heridas.</figcaption>
     </figure>
 
     <div class="scroll-x">
@@ -479,6 +526,8 @@
       <li><span class="quien">CONICET, repositorio: basurales como fuente de alimento para aves en Patagonia</span><a href="https://ri.conicet.gov.ar/handle/11336/101331">ri.conicet.gov.ar/handle/11336/101331</a></li>
       <li><span class="quien">Editorial cientifica Springer: estrategias de apareamiento de las ballenas francas</span><a href="https://doi.org/10.1007/978-3-031-35651-3_23">doi.org/10.1007/978-3-031-35651-3_23</a></li>
       <li><span class="quien">Estudio cientifico sobre madres y crias de ballena franca (separacion cerca del año)</span><a href="https://peeref.com/works/71463919">peeref.com/works/71463919</a></li>
+      <li><span class="quien">Municipalidad de Puerto Piramides: clima y costa</span><a href="https://www.puertopiramides.gov.ar/informacion/">puertopiramides.gov.ar/informacion</a></li>
+      <li><span class="quien">UICN, World Heritage Outlook: Peninsula Valdes</span><a href="https://worldheritageoutlook.iucn.org/node/1088">worldheritageoutlook.iucn.org/node/1088</a></li>
     </ul>
   </section>
 
